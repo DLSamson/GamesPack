@@ -15,4 +15,4 @@ It was copied from this article:
 
 It was made from Visual Studio and it works kinda bad in linux terminal, it also has many errors while compiling using g++;
 
-So I recommend compiling it from Visual Studio 22 and use it only on windows cmd console.
+So I recommend compiling it from Visual Studio 22 and use it only in windows cmd console.
