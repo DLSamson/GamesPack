@@ -10,3 +10,9 @@ It was only the first part, where disk is moving from side to side.
 And I also changed output logic. 
 It was copied from this article:     
 [Написал 3D Игру в Консоли!](http://ilinblog.ru/article.php?id_article=49)
+
+---
+
+It was made from Visual Studio and it works kinda bad in linux terminal, it also has many errors while compiling using g++;
+
+So I recommend compiling it from Visual Studio 22 and use it only on windows cmd console.
