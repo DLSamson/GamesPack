@@ -1,13 +1,10 @@
-﻿#include <iostream>
-#include <vector>
-#include <utility>
-#include <algorithm>
-#include <chrono>
-using namespace std;
-
+#include <iostream>
+#include <cmath>
 #include <stdio.h>
+#include <tchar.h>
 #include <Windows.h>
 
+using namespace std;
 
 int main()
 {
@@ -17,7 +14,7 @@ int main()
 	float pixelAspect = 11.0f / 24.0f;
 
 	char gradient[] = " .:oO#$@$#Oo:. ";
-	int gradienSize = size(gradient) - 2;
+	int gradienSize = std::size(gradient) - 2;
 
 	wchar_t* screen = new wchar_t[width * height + 1];
 	screen[width * height] = '\0';
@@ -47,7 +44,7 @@ int main()
 				screen[i + j * width] = pixel;
 			}
 		}
-		WriteConsoleOutputCharacter(hConsole, screen, width * height, { 0,0 }, &dwBytesWritten);
+		WriteConsoleOutputCharacterW(hConsole, screen, width * height, { 0,0 }, &dwBytesWritten);
 	}
 	
 	getchar();

@@ -10,3 +10,10 @@ It was only the first part, where disk is moving from side to side.
 And I also changed output logic. 
 It was copied from this article:     
 [Написал 3D Игру в Консоли!](http://ilinblog.ru/article.php?id_article=49)
+
+> It can be compiled with g++ now, but still only for windows, since it uses windowsAPI
+
+You can use this command to compile and run the application:
+```bash
+./cnrun.sh
+```
