@@ -17,3 +17,5 @@ You can use this command to compile and run the application:
 ```bash
 ./cnrun.sh
 ```
+
+> You need to be in the current working directory and installed g++ compiler with its path in PATH variable
