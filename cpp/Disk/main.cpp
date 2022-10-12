@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
-#include <stdio.h>
+
+/* Windows onlty part */
 #include <tchar.h>
 #include <Windows.h>
 
@@ -47,5 +48,5 @@ int main()
 		WriteConsoleOutputCharacterW(hConsole, screen, width * height, { 0,0 }, &dwBytesWritten);
 	}
 	
-	getchar();
+	cin.get();
 }
