@@ -1,4 +1,7 @@
 .idea/
+.vscode/
+
 **vendor/
 **node_modules/
 **__pycache__/
+*.exe
