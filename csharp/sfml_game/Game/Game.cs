@@ -8,7 +8,7 @@ namespace Program
     public class Game : GameLoop {
         public const uint DEFEAULT_WINDOW_HEIGHT = 480;
         public const uint DEFEAULT_WINDOW_WIDTH = 640;
-        public const string WINDOW_TITLE = "SfmlGame";
+        public const string WINDOW_TITLE = "SFML_Game";
 
         public Game() : base(DEFEAULT_WINDOW_WIDTH, DEFEAULT_WINDOW_HEIGHT, WINDOW_TITLE, Color.Black) {
             
