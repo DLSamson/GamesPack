@@ -1,6 +1,17 @@
+#if defined(_WIN32)
+    #define _WINDOWS
+#else
+    #define _LINUX
+#endif
+
 #include<iostream>
 #include<string.h>
-#include<unistd.h>
+
+#if defined(_WINDOWS)
+    #include <Windows.h>
+#elif defined(_LINUX)
+    #include <unistd.h>
+#endif
 
 using namespace std;
 
@@ -34,10 +45,18 @@ void print_menu() {
 
 //Util functions
 void delay(float seconds) {
-    usleep(seconds * 1000000); 
+    #if defined(_WINDOWS)
+        Sleep(seconds * 1000);
+    #elif defined(_LINUX)
+        usleep(seconds * 1000000); 
+    #endif
 }
 void clear_screen() {
-    system("clear");
+    #if defined(_WINDOWS)
+        system("cls");
+    #elif defined(_LINUX)
+        system("clear");
+    #endif
 }
 float get_rand(int max = 10) {
     return (rand() % max) + 1;
