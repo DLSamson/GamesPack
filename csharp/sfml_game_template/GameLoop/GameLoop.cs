@@ -5,7 +5,7 @@ using SFML.Window;
 
 namespace Program {
     public abstract class GameLoop {
-        public const int TARGET_FPS = 60;
+        public const int TARGET_FPS = 9999;
         public const float TIME_UNTIL_UPDATE = 1f/TARGET_FPS;
 
         public RenderWindow Window {
