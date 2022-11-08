@@ -14,6 +14,7 @@ I recommend you to use terminal. At least I test them there.
 ### C++
 
 * FishTamagochi
+* FishTamagochiV2
 * Moving Disk
 
 ### PHP
