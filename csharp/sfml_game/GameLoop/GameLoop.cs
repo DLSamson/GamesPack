@@ -42,15 +42,15 @@ namespace Program {
             while(Window.IsOpen) {
                 Window.DispatchEvents();
 
-                totalTimeBeforeUpdate = clock.ElapsedTime.AsSeconds();
+                totalTimeElapsed = clock.ElapsedTime.AsSeconds();
                 deltaTime = totalTimeElapsed - previousTimeElapsed;
                 previousTimeElapsed = totalTimeElapsed;
 
                 totalTimeBeforeUpdate += deltaTime;
 
-                if(totalTimeElapsed >= TIME_UNTIL_UPDATE) {
+                if(totalTimeBeforeUpdate >= TIME_UNTIL_UPDATE) {
                     GameTime.Update(totalTimeBeforeUpdate, clock.ElapsedTime.AsSeconds());
-                    totalTimeElapsed = 0f; 
+                    totalTimeBeforeUpdate = 0f; 
 
                     Update(GameTime);
 
