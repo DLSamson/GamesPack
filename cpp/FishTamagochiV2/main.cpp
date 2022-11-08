@@ -11,6 +11,7 @@ int HEALTH = 100;
 int MONEY = 25;
 int DIFFICULTY = 1;
 string NAME;
+string LAST_MESSAGE = "";
 
 //Printing new data;
 void print_data() {
@@ -41,26 +42,29 @@ void clear_screen() {
 float get_rand(int max = 10) {
     return (rand() % max) + 1;
 }
+void print_message(string message) {
+    for(char i : message) {
+        delay(0.1f);
+        cout.flush();
+        cout << i;
+    }
+}
 
 //Fish Actions
 void feed_fish() {
     if(FOOD > 0) {
         FOOD--;
-        if(HEALTH > 100) {
-            cout << "Your fish feels bad\n"
-            << "Don't over feed it!" << endl;
-            delay(1.f);
-        }
         HEALTH += 1.5 * get_rand() 
             + DIFFICULTY * 0.2f 
             - (HEALTH > 100 ? 10 * DIFFICULTY : 0);
-
-        cout <<  endl << "Feeding fish..."<< endl;
+        LAST_MESSAGE += "\nFish feeded!\n";
+        if(HEALTH > 100) {
+            LAST_MESSAGE = "Your fish feels bad\nDon't over feed it!";
+        }
     }
     else {
-        cout << "You don't have enough food!" << endl;
+        LAST_MESSAGE = "You don't have enough food!";
     }
-    delay(0.1f);
 }
 void update_fish() {
     HEALTH -= 0.7 * get_rand() + (DIFFICULTY * 0.2f);
@@ -83,15 +87,14 @@ void start_work() {
     if(result == one+two) {
         int money = 10 * DIFFICULTY;
         MONEY += money;
-        cout << "You gained: " << money << "$" << endl;
+        LAST_MESSAGE = "You gained: " +  to_string(money) + "$";
         DIFFICULTY++;
     }
     else {
-        cout << "You failed. No money gained" << endl;
+        LAST_MESSAGE = "You failed. No money gained";
         if(DIFFICULTY > 1)
             DIFFICULTY--;
     }
-    delay(1.7f);
 }
 void print_shop() {
     cout << "Small package:\t1\t\t10$" << endl;
@@ -108,6 +111,7 @@ void open_shop() {
     {
         clear_screen();
         print_data();
+        cout << LAST_MESSAGE << endl;
         print_shop();
         cout << "Enter a command: ";
         cin >> choice;
@@ -119,9 +123,8 @@ void open_shop() {
                 FOOD += 5;
             }
             else {
-                cout << "You don't have enough money!" << endl;
+                LAST_MESSAGE = "You don't have enough money!";
             }
-            delay(1.f);
             break;
         case 2:
             //Medium
@@ -130,9 +133,8 @@ void open_shop() {
                 FOOD += 12;
             }
             else {
-                cout << "You don't have enough money!" << endl;
+                LAST_MESSAGE = "You don't have enough money!";
             }
-            delay(1.f);
             break;
         case 3:
             //Big
@@ -141,18 +143,17 @@ void open_shop() {
                 FOOD += 20;
             }
             else {
-                cout << "You don't have enough money!" << endl;
+                LAST_MESSAGE = "You don't have enough money!";
             }
-            delay(1.f);
             break;
         case 4:
             //Exit
+            LAST_MESSAGE = "";
             is_shop = false;
             break;
 
         default:
-            cout << "I dont understand the command!" << endl;
-            cout << "Try again" << endl;
+            LAST_MESSAGE = "I dont understand the command!\nTry again!";
             break;
         }
     }
@@ -162,16 +163,16 @@ int main() {
     srand(time(NULL));
 
     clear_screen();
-    cout << "Enter a name: ";
+    print_message("Enter a name: ");
     cin >> NAME;
-    cout << "Here comes your new Pet Fish" << endl;
-    cout << "Take care of it" << endl;
-    delay(3.f);
+    print_message("Here comes your new Pet Fish\nTake care of it! ");
+    delay(1.f);
 
     while(IS_ALIVE) {
 
         clear_screen();
         print_data();
+        cout << LAST_MESSAGE << endl;
         print_menu();
         cout << "Enter a command: ";
         int choice;
@@ -183,32 +184,31 @@ int main() {
             clear_screen();
             start_work();
             break;
+
         case 2:
             feed_fish();
             break;
+
         case 3:
+            LAST_MESSAGE = "";
             clear_screen();
             open_shop();
             break;
         
-        
         case 0:
-            cout << "Exiting the game..." << endl;
-            delay(3.f);
+            print_message("Exiting the game...");
+            delay(1.f);
             return 0;
         default:
-            cout << "I don't understand..." << endl;
-            cout << "Try again!" << endl;
+            LAST_MESSAGE = "I don't understand...\nTry again!";
             delay(1.f);
             break;
         }
         update_fish();
     }
 
-    cout << "Your fish died somehow" << endl;
-    cout << "You failed." << endl;
-    cout << endl;
-    cout << "Game over" << endl;
-    delay(3.f);
+    print_message("Your fish died somehow\nYou failed.\n");
+    print_message("\n\tGame over\n");
+    delay(1.f);
     return 0;
 }
