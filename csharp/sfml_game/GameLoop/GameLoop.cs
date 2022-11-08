@@ -26,6 +26,7 @@ namespace Program {
             this.WindowClearColor = windowClearColor;
             this.Window = new RenderWindow(new VideoMode(windowWidth, windowHeight), windowTitle);
             this.GameTime = new GameTime();
+            Window.Closed += WindowClosed;
         }
 
         public void Run() {
@@ -54,7 +55,7 @@ namespace Program {
 
                     Update(GameTime);
 
-                    Window.Clear(WindowClearColor);
+                    Window.Clear(this.WindowClearColor);
                     Draw(GameTime);
                     Window.Display();
                 }   
@@ -66,5 +67,7 @@ namespace Program {
         public abstract void Initialize();
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(GameTime gameTime);
+
+        private void WindowClosed(object ?sender, EventArgs e) {Window.Close();}
     }
 }

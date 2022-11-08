@@ -10,12 +10,12 @@ namespace Program
         public const uint DEFEAULT_WINDOW_WIDTH = 640;
         public const string WINDOW_TITLE = "SfmlGame";
 
-        public Game() : base(DEFEAULT_WINDOW_WIDTH, DEFEAULT_WINDOW_HEIGHT, WINDOW_TITLE, Color.Yellow) {
+        public Game() : base(DEFEAULT_WINDOW_WIDTH, DEFEAULT_WINDOW_HEIGHT, WINDOW_TITLE, Color.Black) {
             
         }
 
         public override void LoadContent() {
-
+            DebugUtility.LoadContent();
         }
         public override void Initialize() {
 
@@ -25,7 +25,7 @@ namespace Program
         }
         public override void Draw(GameTime gameTime)
         {
-
+            DebugUtility.DrawPerfomanceData(this, Color.White);
         }
     }
 }
